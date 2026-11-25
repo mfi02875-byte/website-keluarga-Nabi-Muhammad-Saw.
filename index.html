@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mengenal Keluarga dan Sahabat Nabi Muhammad SAW</title>
+  <meta name="description" content="Website edukasi sejarah Islam: keluarga, istri, anak, kerabat, dan sahabat Nabi Muhammad SAW, lengkap dengan latihan soal.">
+  <!-- Font opsional; jika offline, browser memakai font cadangan di style.css -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ===== SIDEBAR / NAVIGASI ===== -->
+  <aside class="sidebar" id="sidebar" aria-label="Menu utama">
+    <div class="brand">
+      <span class="brand-mark" aria-hidden="true">☪</span>
+      <span class="brand-text">Sirah Nabawiyah<small>Keluarga &amp; Sahabat Nabi</small></span>
+    </div>
+    <nav>
+      <button class="nav-item" data-go="beranda"><span>🏠</span> Dashboard / Beranda</button>
+      <button class="nav-item" data-go="materi"><span>📖</span> Materi Pembelajaran</button>
+      <button class="nav-item" data-go="keluarga"><span>🕌</span> Keluarga Nabi</button>
+      <button class="nav-item" data-go="istri"><span>🌙</span> Istri-Istri Nabi</button>
+      <button class="nav-item" data-go="anak"><span>🌱</span> Anak-Anak Nabi</button>
+      <button class="nav-item" data-go="kerabat"><span>🤝</span> Kerabat Nabi</button>
+      <button class="nav-item" data-go="sahabat"><span>⭐</span> Sahabat Nabi</button>
+      <button class="nav-item" data-go="kuis"><span>✍️</span> Latihan Soal</button>
+      <button class="nav-item" data-go="hasil"><span>📊</span> Hasil Nilai</button>
+      <button class="nav-item" data-go="tentang"><span>ℹ️</span> Tentang Website</button>
+    </nav>
+    <div class="side-progress">
+      <div class="side-progress-label">Progres belajar <strong id="side-persen">0%</strong></div>
+      <div class="bar"><div class="bar-fill" id="side-bar"></div></div>
+    </div>
+  </aside>
+  <div class="overlay" id="overlay"></div>
+
+  <!-- ===== KONTEN UTAMA ===== -->
+  <div class="main-wrap">
+    <header class="topbar">
+      <button class="menu-btn" id="menu-btn" aria-label="Buka atau tutup menu" aria-expanded="false">☰</button>
+      <span class="topbar-title" id="topbar-title">Beranda</span>
+    </header>
+
+    <main id="main">
+
+      <!-- BERANDA -->
+      <section class="page" id="page-beranda">
+        <div class="hero">
+          <p class="salam">Assalamu’alaikum warahmatullahi wabarakatuh</p>
+          <h1>Mengenal Keluarga dan Sahabat Nabi Muhammad SAW</h1>
+          <p class="hero-desc">Selamat datang. Website ini mengajak Anda mengenal orang-orang terdekat Rasulullah SAW: keluarga, istri, anak, kerabat, dan para sahabat yang menemani perjuangan beliau. Baca materinya, lalu uji pemahaman lewat latihan soal.</p>
+          <div class="hero-actions">
+            <button class="btn btn-emas" data-go="materi">Mulai Belajar</button>
+            <button class="btn btn-garis" data-go="kuis">Kerjakan Latihan Soal</button>
+          </div>
+        </div>
+
+        <div class="stat-grid">
+          <div class="stat"><strong id="st-materi">0</strong><span>Materi tokoh</span></div>
+          <div class="stat"><strong id="st-kategori">0</strong><span>Kategori tokoh</span></div>
+          <div class="stat"><strong id="st-soal">0</strong><span>Soal latihan</span></div>
+          <div class="stat"><strong id="st-dibaca">0</strong><span>Materi sudah dibaca</span></div>
+        </div>
+
+        <div class="grid-2">
+          <div class="panel">
+            <h2>Jelajahi kategori</h2>
+            <div id="beranda-kategori" class="kat-list"></div>
+          </div>
+          <div class="panel quote">
+            <h2>Pesan belajar</h2>
+            <blockquote id="kutipan"></blockquote>
+            <p class="quote-src" id="kutipan-sumber"></p>
+          </div>
+        </div>
+      </section>
+
+      <!-- MATERI PEMBELAJARAN (semua kategori) -->
+      <section class="page" id="page-materi" hidden>
+        <h1 class="judul-halaman">Materi Pembelajaran</h1>
+        <p class="intro">Pilih tokoh untuk membaca penjelasan lengkap. Anda bisa mencari berdasarkan nama atau hubungan keluarga, misalnya “paman”, “menantu”, atau “muazin”.</p>
+        <div class="panel progress-panel">
+          <div class="progress-head"><span>Progres membaca</span><strong id="materi-progress-teks">0 dari 0 materi</strong></div>
+          <div class="bar"><div class="bar-fill" id="materi-progress-bar"></div></div>
+        </div>
+        <div class="toolbar">
+          <input type="search" id="cari-materi" placeholder="Cari nama atau hubungan keluarga…" aria-label="Cari tokoh">
+          <select id="filter-materi" aria-label="Filter kategori"></select>
+        </div>
+        <p class="hasil-cari" id="hitung-materi"></p>
+        <div class="card-grid" id="list-materi"></div>
+      </section>
+
+      <!-- KELUARGA -->
+      <section class="page" id="page-keluarga" hidden>
+        <h1 class="judul-halaman">Keluarga Nabi Muhammad SAW</h1>
+        <p class="intro">Nabi Muhammad SAW lahir di Makkah dari keluarga Bani Hasyim, cabang terhormat suku Quraisy. Kenali ayah, ibu, kakek, dan para paman beliau.</p>
+        <div class="toolbar"><input type="search" data-cari="keluarga" placeholder="Cari tokoh keluarga…" aria-label="Cari tokoh keluarga"></div>
+        <div class="card-grid" id="list-keluarga"></div>
+      </section>
+
+      <!-- ISTRI -->
+      <section class="page" id="page-istri" hidden>
+        <h1 class="judul-halaman">Istri-Istri Nabi Muhammad SAW</h1>
+        <p class="intro">Para istri Nabi disebut Ummahatul Mukminin, ibu-ibu orang beriman. Dua di antaranya, Khadijah dan Zainab binti Khuzaimah, wafat ketika Nabi masih hidup.</p>
+        <div class="toolbar"><input type="search" data-cari="istri" placeholder="Cari nama istri Nabi…" aria-label="Cari istri Nabi"></div>
+        <div class="card-grid" id="list-istri"></div>
+      </section>
+
+      <!-- ANAK -->
+      <section class="page" id="page-anak" hidden>
+        <h1 class="judul-halaman">Anak-Anak Nabi Muhammad SAW</h1>
+        <p class="intro">Nabi memiliki tujuh anak: tiga putra dan empat putri. Enam dari ibu mereka, Khadijah; satu putra, Ibrahim, dari Mariyah Al-Qibthiyyah.</p>
+        <div class="toolbar"><input type="search" data-cari="anak" placeholder="Cari nama anak Nabi…" aria-label="Cari anak Nabi"></div>
+        <div class="card-grid" id="list-anak"></div>
+      </section>
+
+      <!-- KERABAT -->
+      <section class="page" id="page-kerabat" hidden>
+        <h1 class="judul-halaman">Kerabat Nabi Muhammad SAW</h1>
+        <p class="intro">Bani Hasyim adalah keluarga besar Nabi dari garis Hasyim bin Abdu Manaf. Dari keluarga inilah lahir paman, bibi, sepupu, dan cucu yang berperan dalam sejarah Islam.</p>
+        <div class="toolbar"><input type="search" data-cari="kerabat" placeholder="Cari kerabat Nabi…" aria-label="Cari kerabat Nabi"></div>
+        <div class="card-grid" id="list-kerabat"></div>
+      </section>
+
+      <!-- SAHABAT -->
+      <section class="page" id="page-sahabat" hidden>
+        <h1 class="judul-halaman">Sahabat Nabi Muhammad SAW</h1>
+        <p class="intro">Sahabat adalah orang yang bertemu Nabi dalam keadaan beriman dan wafat dalam keadaan beriman. Empat khalifah pertama dikenal sebagai Khulafaur Rasyidin.</p>
+        <div class="toolbar"><input type="search" data-cari="sahabat" placeholder="Cari nama sahabat…" aria-label="Cari sahabat Nabi"></div>
+        <div class="card-grid" id="list-sahabat"></div>
+      </section>
+
+      <!-- DETAIL TOKOH -->
+      <section class="page" id="page-detail" hidden>
+        <button class="btn btn-garis btn-kecil" id="btn-kembali">← Kembali ke daftar</button>
+        <article class="detail" id="detail-isi"></article>
+        <div class="detail-nav">
+          <button class="btn btn-garis btn-kecil" id="btn-sebelum">← Tokoh sebelumnya</button>
+          <button class="btn btn-garis btn-kecil" id="btn-sesudah">Tokoh berikutnya →</button>
+        </div>
+      </section>
+
+      <!-- LATIHAN SOAL -->
+      <section class="page" id="page-kuis" hidden>
+        <h1 class="judul-halaman">Latihan Soal</h1>
+
+        <div id="kuis-setup" class="panel">
+          <p>Kerjakan <strong id="kuis-jumlah">0</strong> soal pilihan ganda dari seluruh kategori. Urutan soal dan pilihan jawaban diacak setiap kali kuis dimulai.</p>
+          <label class="field">Batas waktu
+            <select id="kuis-durasi">
+              <option value="5">5 menit</option>
+              <option value="10" selected>10 menit</option>
+              <option value="15">15 menit</option>
+              <option value="20">20 menit</option>
+              <option value="30">30 menit</option>
+            </select>
+          </label>
+          <button class="btn btn-emas" id="btn-mulai-kuis">Mulai Kuis</button>
+        </div>
+
+        <div id="kuis-run" hidden>
+          <div class="kuis-bar">
+            <span id="kuis-nomor">Soal 1 dari 1</span>
+            <span class="timer" id="kuis-timer" role="timer" aria-live="off">00:00</span>
+          </div>
+          <div class="panel">
+            <p class="pertanyaan" id="kuis-pertanyaan"></p>
+            <div class="opsi-list" id="kuis-opsi"></div>
+          </div>
+          <div class="kuis-aksi">
+            <button class="btn btn-garis" id="btn-prev">← Sebelumnya</button>
+            <button class="btn btn-garis" id="btn-next">Berikutnya →</button>
+            <button class="btn btn-emas" id="btn-selesai">Selesaikan Kuis</button>
+          </div>
+          <div class="nomor-grid" id="kuis-nomor-grid" aria-label="Nomor soal"></div>
+        </div>
+
+        <div id="kuis-hasil" hidden>
+          <div class="panel skor-panel">
+            <div class="skor-lingkar"><strong id="skor-nilai">0</strong><span>dari 100</span></div>
+            <div>
+              <h2 id="skor-ket">Hasil</h2>
+              <p id="skor-info"></p>
+            </div>
+          </div>
+          <div class="stat-grid">
+            <div class="stat"><strong id="skor-total">0</strong><span>Total soal</span></div>
+            <div class="stat benar"><strong id="skor-benar">0</strong><span>Jawaban benar</span></div>
+            <div class="stat salah"><strong id="skor-salah">0</strong><span>Jawaban salah</span></div>
+            <div class="stat"><strong id="skor-persen">0%</strong><span>Keberhasilan</span></div>
+          </div>
+          <div class="kuis-aksi">
+            <button class="btn btn-emas" id="btn-ulang">Ulangi Kuis</button>
+            <button class="btn btn-garis" id="btn-pembahasan">Lihat Pembahasan</button>
+            <button class="btn btn-garis" data-go="beranda">Kembali ke Dashboard</button>
+          </div>
+          <div id="pembahasan" hidden></div>
+        </div>
+      </section>
+
+      <!-- HASIL NILAI -->
+      <section class="page" id="page-hasil" hidden>
+        <h1 class="judul-halaman">Hasil Nilai</h1>
+        <div class="stat-grid">
+          <div class="stat"><strong id="h-percobaan">0</strong><span>Kuis dikerjakan</span></div>
+          <div class="stat"><strong id="h-tertinggi">0</strong><span>Nilai tertinggi</span></div>
+          <div class="stat"><strong id="h-rata">0</strong><span>Rata-rata nilai</span></div>
+          <div class="stat"><strong id="h-terakhir">0</strong><span>Nilai terakhir</span></div>
+        </div>
+        <div class="panel">
+          <h2>Perkembangan nilai</h2>
+          <div id="grafik" class="grafik"></div>
+          <p class="catatan" id="grafik-ket"></p>
+        </div>
+        <div class="panel">
+          <h2>Riwayat kuis</h2>
+          <div class="tabel-wrap"><table id="tabel-riwayat"></table></div>
+          <div class="kuis-aksi">
+            <button class="btn btn-garis" data-go="kuis">Kerjakan Kuis</button>
+            <button class="btn btn-bahaya" id="btn-reset-riwayat">Hapus Riwayat Nilai</button>
+            <button class="btn btn-bahaya" id="btn-reset-progres">Reset Progres Membaca</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- TENTANG -->
+      <section class="page" id="page-tentang" hidden>
+        <h1 class="judul-halaman">Tentang Website</h1>
+        <div class="panel prosa">
+          <h2>Tujuan</h2>
+          <p>Website ini dibuat sebagai media edukasi sejarah Islam. Isinya memperkenalkan keluarga, istri, anak, kerabat, dan sahabat Nabi Muhammad SAW dengan bahasa yang sederhana.</p>
+          <h2>Manfaat</h2>
+          <p>Masyarakat umum dapat belajar mandiri kapan saja, mencari tokoh dengan cepat, mengukur pemahaman lewat kuis, dan melihat perkembangan belajar dari waktu ke waktu.</p>
+          <h2>Tujuan pembelajaran</h2>
+          <p>Setelah belajar, pengunjung diharapkan mampu menyebutkan hubungan tokoh-tokoh tersebut dengan Nabi, menceritakan peran mereka, dan mengambil keteladanan dari kehidupan mereka.</p>
+          <h2>Catatan tentang sumber</h2>
+          <p>Materi disusun dari rujukan sirah dan sejarah Islam yang umum, seperti Sirah Ibnu Hisyam, Thabaqat Ibnu Sa’ad, dan Siyar A’lam an-Nubala. Pada sejumlah tokoh, tahun wafat atau detail kejadian diriwayatkan berbeda; perbedaan itu ditandai pada kolom “Catatan”. Untuk pendalaman, silakan rujuk kitab asli dan tanyakan kepada ustaz atau ahli sejarah Islam.</p>
+          <h2>Penyimpanan data</h2>
+          <p>Progres membaca dan riwayat nilai disimpan di browser Anda (Local Storage). Data tidak dikirim ke server mana pun, dan akan hilang jika data browser dihapus.</p>
+        </div>
+      </section>
+
+    </main>
+    <footer class="footer">Media edukasi sejarah Islam · Semoga bermanfaat dan menjadi amal jariyah</footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
